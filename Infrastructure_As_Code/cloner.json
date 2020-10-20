@@ -1,0 +1,8 @@
+{
+    "vcenter_server" : "vcenter.brianna.local",
+    "esxi_server" : "super8.cyber.local",
+    "base_folder" : "",
+    "preferred_network" : "480-WAN",
+    "preferred_datastore" : "datastore2-super8",
+    "domain" : "brianna.local"
+}
