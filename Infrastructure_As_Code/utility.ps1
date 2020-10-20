@@ -21,6 +21,7 @@ function createSwitch {
 
     $switchName = Read-Host "Enter Name for Switch"
 
+    Write-Host "Creating New Virtual Switch:"
     New-VirtualSwitch -VMHost $vmhost -Name $switchName -ErrorAction Ignore
 }
 
@@ -34,5 +35,6 @@ function createPortGroup {
     Get-VirtualSwitch | Format-Table Name
     $vswitch = "Enter the Switch to place the Port Group"
 
+    Write-Host "Creating New Port Group:"
     New-VirtualPortGroup -VMHost $vmhost -VirtualSwitch $vswitch -Name $portName
 }
