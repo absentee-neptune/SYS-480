@@ -45,10 +45,13 @@ function changeNetwork {
 }
 
 function utilityMenu {
+    Write-Host ""
+    Write-Host "Utility Functions Menu"
     Write-Host "[1] Create Virtual Switch"
     Write-Host "[2] Create Virtual Port Group"
     Write-Host "[3] Change Network for a VM"
     Write-Host "[E]xit"
+    Write-Host ""
     
     $option = Read-Host "Choose a Utility Function"
 
