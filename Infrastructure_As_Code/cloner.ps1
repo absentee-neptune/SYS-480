@@ -53,7 +53,7 @@ function cloneConfig {
             $linkedname = "{0}.linked" -f $CloneName
     
             Write-Host "Creating Linked Clone of ${basevm}:"
-            New-VM -Name $linkedname -VM $basevm -LinkedClone -ReferenceSnapshot $snapshot -VMHost $vmhost -Datastore $dstore -Portgroup $network -ErrorAction Stop
+            New-VM -Name $linkedname -VM $basevm -LinkedClone -ReferenceSnapshot $snapshot -VMHost $vmhost -Datastore $dstore -NetworkName $network -ErrorAction Stop
         }
         catch{
             $PSItem
