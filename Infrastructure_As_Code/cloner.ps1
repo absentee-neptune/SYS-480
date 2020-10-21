@@ -6,7 +6,7 @@ if (Test-Path $configuration_path) {
     Write-Host "Using a Saved Configuration File:"
     $interactive = $false
     $conf = (Get-Content -Raw -Path $configuration_path | ConvertFrom-Json)
-} else {
+} elseif ($interactive) {
     Write-Host "Interactive Mode"
 }
 
@@ -38,7 +38,7 @@ Get-VMHost | Format-Table Name
 $vmhost = Read-Host "Enter the VM Host to place the Clone"
 
 Write-Host "Here are the current Networks:"
-Get-VirtualNetwork | Format-Table name
+Get-VirtualSwitch | Format-Table name
 $network = Read-Host "Enter Network Assignment"
 
 Write-Host "Here are the current Datastores on the Host:"
@@ -51,7 +51,7 @@ if($CloneType -eq "F")
 { 
     try {
         Write-Host "Creating Full Clone of ${basevm}:"
-        New-VM -Name $CloneName -VM $basevm -VMHost $vmhost -Datastore $dstore -ErrorAction Stop
+        New-VM -Name $CloneName -VM $basevm -VMHost $vmhost -NetworkName $network -Datastore $dstore -ErrorAction Stop
     }
     catch{
         Write-Output "ISSUE: $PSItem"
@@ -68,7 +68,7 @@ if($CloneType -eq "L")
         $linkedname = "{0}.linked" -f $CloneName
 
         Write-Host "Creating Linked Clone of ${basevm}:"
-        New-VM -Name $linkedname -VM $basevm -LinkedClone -ReferenceSnapshot $snapshot -VMHost $vmhost -Datastore $dstore -ErrorAction Stop
+        New-VM -Name $linkedname -VM $basevm -LinkedClone -ReferenceSnapshot $snapshot -VMHost $vmhost -NetworkName $network -Datastore $dstore -ErrorAction Stop
     }
     catch
     {
