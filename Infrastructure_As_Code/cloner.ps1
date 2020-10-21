@@ -54,9 +54,10 @@ function cloneConfig {
     
             Write-Host "Creating Linked Clone of ${basevm}:"
             New-VM -Name $linkedname -VM $basevm -LinkedClone -ReferenceSnapshot $snapshot -VMHost $vmhost -Datastore $dstore -ErrorAction Stop
+            Get-VM $linkedname | Get-NetworkAdapter | Set-NetworkAdapter -NetworkName $network -ErrorAction Stop
         }
         catch{
-            $PSItem
+            Write-Output "ISSUE: $PSItem"
             Break
         }
     }
