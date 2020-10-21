@@ -33,7 +33,35 @@ function createPortGroup {
     New-VirtualPortGroup -VMHost $vmhost -VirtualSwitch $vswitch -Name $portName
 }
 
-# Calling the Functions
+function changeNetwork {
+    Get-VM | Format-Table Name
+    $vmName = Read-Host "Enter the VM that requres the Network Change"
+
+    $numInterface = Read-Host "Enter the Network Adapter Number to change"
+
+    $preferredNetwork = Read-Host "Enter the Netowrk Name"
+
+    Get-VM $vmName | Get-NetworkAdapter | Set-NetworkAdapter -NetworkAdapter $numInterface -NetworkName $preferredNetwork
+}
+
+function utilityMenu {
+    Write-Host "[1] Create Virtual Switch"
+    Write-Host "[2] Create Virtual Port Group"
+    Write-Host "[3] Change Network for a VM"
+    Write-Host "[E]xit"
+    
+    $option = Read-Host "Choose a Utility Function"
+
+    if ($option -eq 1) {
+        createSwitch
+    } elseif ($option -eq 2) {
+        createPortGroup
+    } elseif ($option -eq 3) {
+        changeNetwork
+    } elseif ($option -eq "E") {
+        Break
+    }
+}
+
 Connect
-createSwitch
-createPortGroup
+utilityMenu
