@@ -1,17 +1,3 @@
-$configuration_path = "Infrastructure_As_Code/cloner.json"
-$interactive = $true
-$conf = ""
-
-if (Test-Path $configuration_path) {
-    Write-Host "Using a Saved Configuration File:"
-    $interactive = $false
-    $conf = (Get-Content -Raw -Path $configuration_path | ConvertFrom-Json)
-    cloneConfig
-} elseif ($interactive) {
-    Write-Host "Interactive Mode"
-    cloneInteractive
-}
-
 function cloneConfig {
     try {
         $VIserver = $conf.vcenter_server
@@ -142,4 +128,18 @@ function cloneInteractive {
             Break
         }
     }
+}
+
+$configuration_path = "Infrastructure_As_Code/cloner.json"
+$interactive = $true
+$conf = ""
+
+if (Test-Path $configuration_path) {
+    Write-Host "Using a Saved Configuration File:"
+    $interactive = $false
+    $conf = (Get-Content -Raw -Path $configuration_path | ConvertFrom-Json)
+    cloneConfig
+} elseif ($interactive) {
+    Write-Host "Interactive Mode"
+    cloneInteractive
 }
