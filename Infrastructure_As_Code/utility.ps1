@@ -32,3 +32,8 @@ function createPortGroup {
     Write-Host "Creating New Port Group:"
     New-VirtualPortGroup -VMHost $vmhost -VirtualSwitch $vswitch -Name $portName
 }
+
+# Calling the Functions
+Connect
+createSwitch
+createPortGroup
