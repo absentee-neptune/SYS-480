@@ -1,4 +1,6 @@
 function cloneConfig {
+    $conf = (Get-Content -Raw -Path $configuration_path | ConvertFrom-Json)
+
     try {
         $VIserver = $conf.vcenter_server
         Connect-VIServer -Server $VIserver -ErrorAction Stop
@@ -89,9 +91,9 @@ function cloneInteractive {
     Get-VMHost | Format-Table Name
     $vmhost = Read-Host "Enter the VM Host to place the Clone"
 
-    Write-Host "Here are the current Networks:"
-    Get-VirtualSwitch | Format-Table name
-    $network = Read-Host "Enter Network Assignment"
+    Write-Host "Here are the current Port Groups:"
+    Get-VirtualPortGroup | Format-Table name
+    $network = Read-Host "Enter Network Adapter Assignment"
 
     Write-Host "Here are the current Datastores on the Host:"
     Get-Datastore | Format-Table Name
