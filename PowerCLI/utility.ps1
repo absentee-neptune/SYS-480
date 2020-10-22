@@ -33,12 +33,15 @@ function createPortGroup {
 function changeNetwork {
     Get-VM | Format-Table Name
     $vmName = Read-Host "Enter the VM that requres the Network Change"
+    $vm = Get-VM -Name $vmName
 
+    $vm | Get-NetworkAdapter
     $numInterface = Read-Host "Enter the Network Adapter Number to change"
 
-    $preferredNetwork = Read-Host "Enter the Netowrk Name"
-
-    Get-VM $vmName | Get-NetworkAdapter | Set-NetworkAdapter -NetworkAdapter $numInterface -NetworkName $preferredNetwork
+    $preferredNetwork = Read-Host "Enter the New Network Name"
+    
+    $interfaces = $vm | Get-NetworkAdapter
+    $interfaces[$numInterface] | Set-NetworkAdapter -NetworkName $preferredNetwork
 }
 
 function getIP {
