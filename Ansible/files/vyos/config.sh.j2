@@ -14,7 +14,7 @@ set service ssh listen-address '0.0.0.0'
 set system host-name "{{ hostname }}"
 set system name-server "{{ name-server }}"
 delete interfaces ethernet eth0 address 'dhcp'
-set interfaces ethernet eth0 address "{{ wan_ip }}"
+set interfaces ethernet eth0 address "{{ wan_ip }}/24"
 commit
 save
 run reboot now
