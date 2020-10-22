@@ -35,8 +35,8 @@ function changeNetwork {
     $vmName = Read-Host "Enter the VM that requres the Network Change"
     $vm = Get-VM -Name $vmName
 
-    $vm | Get-NetworkAdapter
-    $numInterface = Read-Host "Enter the Network Adapter Number to change"
+    $vm | Get-NetworkAdapter | Format-Table
+    $numInterface = Read-Host "Enter the Network Adapter Position to change [0-2]"
 
     $preferredNetwork = Read-Host "Enter the New Network Name"
     
