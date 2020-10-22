@@ -1,0 +1,7 @@
+[vyos]
+wan_ip= lan_ip= lan= name_server=10.0.17.4 gateway=10.0.17.2
+
+[vyos:vars]
+ansible_python_interpreter=
+#ansible_connection=network_cli
+#ansible_network_os=vyos
