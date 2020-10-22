@@ -20,17 +20,14 @@ function createSwitch {
 }
 
 function createPortGroup {
-    Get-VMHost | Format-Table Name
-    $vmhost = Read-Host "Enter the VM Host to place the Port Group"
-
     $portName = Read-Host "Enter Name for Port"
 
     Write-Host "Here are the Current Virtual Switches on the VM Host:"
     Get-VirtualSwitch | Format-Table Name
-    $vswitch = "Enter the Switch to place the Port Group"
+    $vswitch = Read-Host "Enter the Switch to place the Port Group"
 
     Write-Host "Creating New Port Group:"
-    New-VirtualPortGroup -VMHost $vmhost -VirtualSwitch $vswitch -Name $portName
+    New-VirtualPortGroup -VirtualSwitch $vswitch -Name $portName
 }
 
 function changeNetwork {
@@ -67,4 +64,6 @@ function utilityMenu {
 }
 
 Connect
-utilityMenu
+while ($true) {
+    utilityMenu
+}
