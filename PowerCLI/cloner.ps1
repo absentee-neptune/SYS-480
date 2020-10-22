@@ -135,7 +135,7 @@ function cloneInteractive {
     }
 }
 
-$configuration_path = "Infrastructure_As_Code/cloner.json"
+$configuration_path = "PowerCLI/cloner.json"
 $interactive = $true
 $conf = ""
 
