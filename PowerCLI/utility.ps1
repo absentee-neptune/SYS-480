@@ -46,9 +46,10 @@ function changeNetwork {
 
 function getIP {
     Get-VM | Format-Table Name
-    $vm = Read-Host "Which VM has the needed IP Address"
-
-    Write-Host $vm.Guest.IPaddress[0] hostname=$vm.name
+    $vmName = Read-Host "Which VM has the needed IP Address"
+    $vm = Get-VM -Name $vmName
+    
+    Write-Host $vm.Guest.IPaddress[0] hostname=$vmName
 }
 
 function utilityMenu {
