@@ -1,0 +1,13 @@
+#!/bin/vbash
+source /opt/vyatta/etc/functions/script-template
+configure
+set service dhcp-server global-parameters "local-address 10.0.5.2;"
+set service dhcp-server shared-network-name "{{ network_name }}" authoritative
+set service dhcp-server shared-network-name "{{ network_name }}" subnet 10.0.5.0/24 default-router "{{ default_router }}"
+set service dhcp-server shared-network-name "{{ network_name }}" subnet 10.0.5.0/24 dns-server "{{ dns_server }}"
+set service dhcp-server shared-network-name "{{ network_name }}" subnet 10.0.5.0/24 domain-name "{{ domain_name }}"
+set service dhcp-server shared-network-name "{{ network_name }}" subnet 10.0.5.0/24 lease 86400
+set service dhcp-server shared-network-name "{{ network_name }}" subnet 10.0.5.0/24 range BLUE8-POOL start "{{ range_start }}"
+set service dhcp-server shared-network-name "{{ network_name }}" subnet 10.0.5.0/24 range BLUE8-POOL stop "{{ range_stop }}"
+commit
+save
