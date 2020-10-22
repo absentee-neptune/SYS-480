@@ -41,12 +41,20 @@ function changeNetwork {
     Get-VM $vmName | Get-NetworkAdapter | Set-NetworkAdapter -NetworkAdapter $numInterface -NetworkName $preferredNetwork
 }
 
+function getIP {
+    Get-VM | Format-Table Name
+    $vm = Read-Host "Which VM has the needed IP Address"
+
+    Write-Host $vm.Guest.IPaddress[0] hostname=$vm.name
+}
+
 function utilityMenu {
     Write-Host ""
     Write-Host "Utility Functions Menu"
     Write-Host "[1] Create Virtual Switch"
     Write-Host "[2] Create Virtual Port Group"
     Write-Host "[3] Change Network for a VM"
+    Write-Host "[4] Show IP of a VM"
     Write-Host "[E]xit"
     Write-Host ""
     
@@ -58,6 +66,8 @@ function utilityMenu {
         createPortGroup
     } elseif ($option -eq 3) {
         changeNetwork
+    } elseif ($option -eq 4) {
+        getIP
     } elseif ($option -eq "E") {
         Break
     }
