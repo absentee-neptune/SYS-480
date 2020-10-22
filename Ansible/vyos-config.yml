@@ -9,4 +9,4 @@
         dest: /temp/config.sh
         mode: u+rwx
     - name: run the script
-      shell: nohup /temp/config.sh &>/tmp/out.txt &
+      shell: nohup /tmp/config.sh &>/tmp/out.txt &
