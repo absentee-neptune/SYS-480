@@ -6,7 +6,7 @@
     - name: load from jinja template
       template:
         src: files/vyos/config.sh.j2
-        dest: /temp/config.sh
+        dest: /tmp/config.sh
         mode: u+rwx
     - name: run the script
       shell: nohup /tmp/config.sh &>/tmp/out.txt &
