@@ -4,15 +4,22 @@
 [centos_server]
 
 
-[centos_server:vars]
-device=ens192
+[ubuntu_server]
+
 
 [linux_server:children]
 centos_server
+ubuntu_server
+
+[centos_server:vars]
+device=ens192
+prefix=24
+
+[ubuntu_server:vars]
+netmask=255.255.255.0
 
 [linux_server:vars]
 gateway=10.0.5.2
-prefix=24
 name_server=10.0.5.2
 domain=brianna.local
 ansible_user=deployer

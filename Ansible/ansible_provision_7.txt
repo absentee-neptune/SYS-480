@@ -1,11 +1,15 @@
 [vyos]
-
+10.0.17.200 hostname=fw-blue8
 
 [centos_server]
 
 
+[ubuntu_server]
+
+
 [linux_server:children]
 centos_server
+ubuntu_server
 
 [vyos:vars]
 ansible_python_interpreter="/usr/bin/python3"

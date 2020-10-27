@@ -1,0 +1,6 @@
+auto eth1
+  iface eth1 inet static
+  address "{{ lan_ip }}"
+  netmask "{{ netmask }}"
+  gateway "{{ gateway }}"
+  dns-nameservers "{{ name_server }}"

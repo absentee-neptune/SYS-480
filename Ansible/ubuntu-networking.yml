@@ -1,7 +1,7 @@
 ---
-# This playbook configures blueteam centos networking 
-- name: centos-networking
-  hosts: centos_server
+# This playbook configures blueteam ubuntu networking 
+- name: ubuntu-networking
+  hosts: ubuntu_server
   tasks:
     - name: set the hostname
       hostname:
@@ -16,8 +16,8 @@
 
     - name: push over the networking script
       template:
-        src: files/centOS/ifcfg-script.j2
-        dest: '/etc/sysconfig/network-scripts/ifcfg-{{device}}'
+        src: files/Ubuntu/ifcfg-script.j2
+        dest: '/etc/network/interfaces'
         mode: 0644
         owner: root
         group: root
