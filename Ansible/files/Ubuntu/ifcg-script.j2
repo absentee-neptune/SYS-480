@@ -1,6 +1,10 @@
-auto eth1
-  iface eth1 inet static
-  address "{{ lan_ip }}"
-  netmask "{{ netmask }}"
-  gateway "{{ gateway }}"
-  dns-nameservers "{{ name_server }}"
+network:  
+  version: 2
+  ethernets:
+    id0:
+      addresses:
+        - {{ lan_ip }}/{{ prefix }}
+      gateway4: {{ gateway }}
+      nameservers:
+        search: {{ domain }}
+        addresses: {{ name_server}}
