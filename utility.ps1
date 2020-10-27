@@ -45,9 +45,6 @@ function changeNetwork {
 }
 
 function getIP {
-    # Get-VM | Format-Table Name
-    # $vmName = Read-Host "Which VM has the needed IP Address"
-    
     param (
         [string]$vmName
     )
@@ -55,33 +52,3 @@ function getIP {
     $vm = Get-VM -Name $vmName
     Write-Host $vm.Guest.IPaddress[0] hostname=$vmName
 }
-
-# function utilityMenu {
-#     Write-Host ""
-#     Write-Host "Utility Functions Menu"
-#     Write-Host "[1] Create Virtual Switch"
-#     Write-Host "[2] Create Virtual Port Group"
-#     Write-Host "[3] Change Network for a VM"
-#     Write-Host "[4] Show IP of a VM"
-#     Write-Host "[E]xit"
-#     Write-Host ""
-    
-#     $option = Read-Host "Choose a Utility Function"
-
-#     if ($option -eq 1) {
-#         createSwitch
-#     } elseif ($option -eq 2) {
-#         createPortGroup
-#     } elseif ($option -eq 3) {
-#         changeNetwork
-#     } elseif ($option -eq 4) {
-#         getIP
-#     } elseif ($option -eq "E") {
-#         Break
-#     }
-# }
-
-# Connect
-# while ($true) {
-#     utilityMenu
-# }
