@@ -40,7 +40,7 @@ function cloneConfig {
             New-VM -Name $CloneName -VM $basevm -VMHost $vmhost -Datastore $dstore -ErrorAction Stop
             Get-VM $CloneName | Get-NetworkAdapter | Set-NetworkAdapter -NetworkName $network -ErrorAction Stop
         }
-        catch{
+        catch {
             Write-Output "ISSUE: $PSItem"
             Break
         }
@@ -48,8 +48,7 @@ function cloneConfig {
     
     if($CloneType -eq "L")
     {
-        try
-        {
+        try {
             $snapshot = Get-Snapshot -VM $basevm -Name "Base"
     
             # $linkedname = "{0}.linked" -f $CloneName
@@ -61,7 +60,7 @@ function cloneConfig {
             New-VM -Name $CloneName -VM $basevm -LinkedClone -ReferenceSnapshot $snapshot -VMHost $vmhost -Datastore $dstore -ErrorAction Stop
             Get-VM $CloneName | Get-NetworkAdapter | Set-NetworkAdapter -NetworkName $network -ErrorAction Stop
         }
-        catch{
+        catch {
             Write-Output "ISSUE: $PSItem"
             Break
         }
@@ -113,7 +112,7 @@ function cloneInteractive {
             New-VM -Name $CloneName -VM $basevm -VMHost $vmhost -Datastore $dstore -ErrorAction Stop
             Get-VM $linkedname | Get-NetworkAdapter | Set-NetworkAdapter -NetworkName $network -ErrorAction Stop
         }
-        catch{
+        catch {
             Write-Output "ISSUE: $PSItem"
             Break
         }
@@ -121,8 +120,7 @@ function cloneInteractive {
 
     if($CloneType -eq "L")
     {
-        try
-        {
+        try {
             $snapshot = Get-Snapshot -VM $basevm -Name "Base"
 
             $linkedname = "{0}.linked" -f $CloneName
@@ -131,8 +129,7 @@ function cloneInteractive {
             New-VM -Name $linkedname -VM $basevm -LinkedClone -ReferenceSnapshot $snapshot -VMHost $vmhost -Datastore $dstore -ErrorAction Stop
             Get-VM $linkedname | Get-NetworkAdapter | Set-NetworkAdapter -NetworkName $network -ErrorAction Stop
         }
-        catch
-        {
+        catch {
             Write-Output "ISSUE: $PSItem"
             Break
         }
