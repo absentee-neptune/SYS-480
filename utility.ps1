@@ -52,3 +52,11 @@ function getIP {
     $vm = Get-VM -Name $vmName
     Write-Host $vm.Guest.IPaddress[0] hostname=$vmName
 }
+
+function powerOn {
+    param (
+        [string]$vmName
+    )
+  
+    Start-VM -VM $vmName
+}
