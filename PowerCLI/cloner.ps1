@@ -37,7 +37,7 @@ function cloneConfig {
         try {
             Write-Host "Creating Full Clone of ${basevm}:"
             New-VM -Name $CloneName -VM $basevm -VMHost $vmhost -Datastore $dstore -ErrorAction Stop
-            Get-VM $linkedname | Get-NetworkAdapter | Set-NetworkAdapter -NetworkName $network -ErrorAction Stop
+            Get-VM $CloneName | Get-NetworkAdapter | Set-NetworkAdapter -NetworkName $network -ErrorAction Stop
         }
         catch{
             Write-Output "ISSUE: $PSItem"
@@ -51,11 +51,14 @@ function cloneConfig {
         {
             $snapshot = Get-Snapshot -VM $basevm -Name "Base"
     
-            $linkedname = "{0}.linked" -f $CloneName
+            # $linkedname = "{0}.linked" -f $CloneName
     
             Write-Host "Creating Linked Clone of ${basevm}:"
-            New-VM -Name $linkedname -VM $basevm -LinkedClone -ReferenceSnapshot $snapshot -VMHost $vmhost -Datastore $dstore -ErrorAction Stop
-            Get-VM $linkedname | Get-NetworkAdapter | Set-NetworkAdapter -NetworkName $network -ErrorAction Stop
+            # New-VM -Name $linkedname -VM $basevm -LinkedClone -ReferenceSnapshot $snapshot -VMHost $vmhost -Datastore $dstore -ErrorAction Stop
+            # Get-VM $linkedname | Get-NetworkAdapter | Set-NetworkAdapter -NetworkName $network -ErrorAction Stop
+            
+            New-VM -Name $CloneName -VM $basevm -LinkedClone -ReferenceSnapshot $snapshot -VMHost $vmhost -Datastore $dstore -ErrorAction Stop
+            Get-VM $CloneName | Get-NetworkAdapter | Set-NetworkAdapter -NetworkName $network -ErrorAction Stop
         }
         catch{
             Write-Output "ISSUE: $PSItem"
