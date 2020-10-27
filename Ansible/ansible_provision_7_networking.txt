@@ -13,10 +13,9 @@ ubuntu_server
 
 [centos_server:vars]
 device=ens192
-lan_ip=
 
 [ubuntu_server:vars]
-lan_ip=
+device=
 
 [linux_server:vars]
 gateway=10.0.5.2
