@@ -31,12 +31,14 @@ function createPortGroup {
 }
 
 function changeNetwork {
-    Get-VM | Format-Table Name
-    $vmName = Read-Host "Enter the VM that requres the Network Change"
+    # Get-VM | Format-Table Name
+    # $vmName = Read-Host "Enter the VM that requres the Network Change"
+    $vmName = 
     $vm = Get-VM -Name $vmName
 
-    $vm | Get-NetworkAdapter | Format-Table
-    $numInterface = Read-Host "Enter the Network Adapter Position to change [0-2]"
+    # $vm | Get-NetworkAdapter | Format-Table
+    # $numInterface = Read-Host "Enter the Network Adapter Position to change [0-2]"
+    $numInterface = 0
 
     $preferredNetwork = Read-Host "Enter the New Network Name"
     
@@ -52,32 +54,32 @@ function getIP {
     Write-Host $vm.Guest.IPaddress[0] hostname=$vmName
 }
 
-function utilityMenu {
-    Write-Host ""
-    Write-Host "Utility Functions Menu"
-    Write-Host "[1] Create Virtual Switch"
-    Write-Host "[2] Create Virtual Port Group"
-    Write-Host "[3] Change Network for a VM"
-    Write-Host "[4] Show IP of a VM"
-    Write-Host "[E]xit"
-    Write-Host ""
+# function utilityMenu {
+#     Write-Host ""
+#     Write-Host "Utility Functions Menu"
+#     Write-Host "[1] Create Virtual Switch"
+#     Write-Host "[2] Create Virtual Port Group"
+#     Write-Host "[3] Change Network for a VM"
+#     Write-Host "[4] Show IP of a VM"
+#     Write-Host "[E]xit"
+#     Write-Host ""
     
-    $option = Read-Host "Choose a Utility Function"
+#     $option = Read-Host "Choose a Utility Function"
 
-    if ($option -eq 1) {
-        createSwitch
-    } elseif ($option -eq 2) {
-        createPortGroup
-    } elseif ($option -eq 3) {
-        changeNetwork
-    } elseif ($option -eq 4) {
-        getIP
-    } elseif ($option -eq "E") {
-        Break
-    }
-}
+#     if ($option -eq 1) {
+#         createSwitch
+#     } elseif ($option -eq 2) {
+#         createPortGroup
+#     } elseif ($option -eq 3) {
+#         changeNetwork
+#     } elseif ($option -eq 4) {
+#         getIP
+#     } elseif ($option -eq "E") {
+#         Break
+#     }
+# }
 
-Connect
-while ($true) {
-    utilityMenu
-}
+# Connect
+# while ($true) {
+#     utilityMenu
+# }
