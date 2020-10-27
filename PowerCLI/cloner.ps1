@@ -22,7 +22,8 @@ function cloneConfig {
         Break
     }
     
-    $CloneType = Read-Host "[F]ull Clone or [L]inked Clone"
+    #$CloneType = Read-Host "[F]ull Clone or [L]inked Clone"
+    $CloneType = $conf.clone_type
     
     $vmhost = $conf.esxi_server
     
