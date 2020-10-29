@@ -2,9 +2,9 @@
 10.0.17.200 hostname=fw-blue8
 
 [centos_server]
-10.0.5.77 hostname=centos-1
-10.0.5.75 hostname=centos-2
-10.0.5.76 hostname=centos-3
+10.0.5.77 hostname=centos-1 lan_ip=10.0.5.11
+10.0.5.75 hostname=centos-2 lan_ip=10.0.5.12
+10.0.5.76 hostname=centos-3 lan_ip=10.0.5.13
 
 [ubuntu_server]
 
