@@ -1,7 +1,7 @@
 ---
 # This playbook adds the deployer's public key
 - name: push key
-  hosts: centos_server
+  hosts: ubuntu_server
   tasks:
     - name: create the .ssh directory if not already there
       file: 
