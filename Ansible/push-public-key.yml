@@ -18,7 +18,7 @@
     - name: copy over key block and apend to authorized_keys
       blockinfile: 
         dest: /home/deployer/.ssh/authorized_keys
-        block: ssh-rsa 
+        block: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCn2Xfuuy1rl5wkcCqEnSeCF7jAXInpE7uKot6wA4bRLLe6Zeqf/LL9Dcfzm+ty/0dlmFhGe+2nGOiRid1PGrITgwqyutY8/ssRH573mz31SAk7ZY+yrrWD/ne5TjilFkAz1HjWIn6vi1uzNfc4OTw9dALQrEhOpYDIdoIk5rK64bosBgI9GgLt7AfXrdgmMpqQCZczatbzeHDACEPMZr0wuzfh3p8/UbzLZJi0fW3icbnWaMh6eI8GgrHUsh8y0WBSiO9a0GmxgytQZCVPa9T7rs+v+km1jcHaciax+4erl/avhta/sDQiiyxcus4nkh5SZpT9gIX3h2WPQEAz1xyh20h9yIaVgmRZPkTbhXtx61PWvGEOmdO5fR0/UNPS1qcVfhB41meMTwRwFnj3wvDT1EkFnQ8XoVm/1ry+6KT+4UO3dKGuNMlAXF4CmcAWcXnqrci5ZFYbOQiVsD9hja7kA0xm4S0vvMbBC30MW7wqH0qbfeI9cyY1E6sFnTVeLcc= brianna@xubuntu-wan
     
     - name: create sudoers dropin file for 480
       file: 
