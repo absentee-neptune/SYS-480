@@ -16,7 +16,7 @@
 
     - name: push over the networking script
       template:
-        src: files/Ubuntu/ifcfg-script.j2
+        src: files/Ubuntu/ifcg-script.j2
         dest: '/etc/cloud/cloud.cfg'
         mode: 0644
         owner: root

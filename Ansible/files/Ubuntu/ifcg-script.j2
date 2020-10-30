@@ -1,9 +1,8 @@
 network:  
   version: 2
   ethernets:
-    id0:
-      addresses:
-        - {{ lan_ip }}/{{ prefix }}
+    ens160:
+      addresses: {{ lan_ip }}/{{ prefix }}
       gateway4: {{ gateway }}
       nameservers:
         search: {{ domain }}
