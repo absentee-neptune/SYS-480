@@ -7,7 +7,8 @@
 10.0.5.76 hostname=centos-3 lan_ip=10.0.5.13
 
 [ubuntu_server]
-
+10.0.5.78 hostname=ubuntu-1
+10.0.5.79 hostname=ubuntu-2
 
 [linux_server:children]
 centos_server
