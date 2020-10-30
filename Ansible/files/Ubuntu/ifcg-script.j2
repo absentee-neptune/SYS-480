@@ -6,4 +6,5 @@ network:
         - {{ lan_ip }}/{{ prefix }}
       gateway4: {{ gateway }}
       nameservers:
-        addresses: {{ name_server }}
+        search: [{{ domain }}]
+        addresses: [{{ name_server }}]
