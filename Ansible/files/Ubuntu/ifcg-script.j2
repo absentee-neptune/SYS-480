@@ -2,8 +2,8 @@ network:
   version: 2
   ethernets:
     ens160:
-      addresses: {{ lan_ip }}/{{ prefix }}
+      addresses: 
+        - {{ lan_ip }}/{{ prefix }}
       gateway4: {{ gateway }}
       nameservers:
-        search: {{ domain }}
         addresses: {{ name_server }}

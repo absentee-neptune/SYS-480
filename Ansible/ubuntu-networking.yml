@@ -17,7 +17,7 @@
     - name: push over the networking script
       template:
         src: files/Ubuntu/ifcg-script.j2
-        dest: '/etc/cloud/cloud.cfg'
+        dest: '/etc/netplan/network.yaml'
         mode: 0644
         owner: root
         group: root
@@ -25,7 +25,7 @@
       become: yes
 
     - name: restart networking
-      shell: "sleep 5 && reboot"
+      shell: "sudo netplan apply | reboot"
       become: yes
       async: 1
       poll: 0
