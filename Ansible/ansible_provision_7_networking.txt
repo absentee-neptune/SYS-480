@@ -18,7 +18,6 @@ ubuntu_server
 device=ens192
 
 [ubuntu_server:vars]
-device=
 
 [linux_server:vars]
 gateway=10.0.5.2
