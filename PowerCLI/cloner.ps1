@@ -4,8 +4,7 @@ function cloneConfig {
     try {
         $VIserver = $conf.vcenter_server
         Connect-VIServer -Server $VIserver -ErrorAction Stop
-    }
-    catch {
+    } catch {
         Write-Output "ISSUE: $PSItem"
         Break
     }
@@ -16,8 +15,7 @@ function cloneConfig {
         Write-Host "Here are the current Base VMs:"
         Get-VM -Location $BaseLocation -ErrorAction Stop | Format-Table Name
         $basevm = Read-Host "Enter the name of the Base VM to clone"
-    }
-    catch {
+    } catch {
         Write-Output "ISSUE: $PSItem"
         Break
     }
@@ -39,8 +37,7 @@ function cloneConfig {
             Write-Host "Creating Full Clone of ${basevm}:"
             New-VM -Name $CloneName -VM $basevm -VMHost $vmhost -Datastore $dstore -ErrorAction Stop
             Get-VM $CloneName | Get-NetworkAdapter | Set-NetworkAdapter -NetworkName $network -ErrorAction Stop
-        }
-        catch {
+        } catch {
             Write-Output "ISSUE: $PSItem"
             Break
         }
@@ -59,8 +56,7 @@ function cloneConfig {
             
             New-VM -Name $CloneName -VM $basevm -LinkedClone -ReferenceSnapshot $snapshot -VMHost $vmhost -Datastore $dstore -ErrorAction Stop
             Get-VM $CloneName | Get-NetworkAdapter | Set-NetworkAdapter -NetworkName $network -ErrorAction Stop
-        }
-        catch {
+        } catch {
             Write-Output "ISSUE: $PSItem"
             Break
         }
