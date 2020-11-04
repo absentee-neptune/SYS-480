@@ -44,13 +44,17 @@ function changeNetwork {
     $interfaces[$numInterface] | Set-NetworkAdapter -NetworkName $preferredNetwork
 }
 
-function getIP {
+function getIPs {
     param (
         [string]$vmName
     )
     
-    $vm = Get-VM -Name $vmName
-    Write-Host $vm.Guest.IPaddress[0] hostname=$vmName
+    $vms = Get-VM -Name $vmName
+    # Write-Host $vm.Guest.IPaddress[0] hostname=$vmName
+
+    foreach ($vm in $vms) {
+        Write-Host $vm.Guest.IPaddress[0] hostname=$vm.Name
+    }
 }
 
 function powerOn {
