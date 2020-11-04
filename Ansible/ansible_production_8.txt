@@ -19,10 +19,17 @@ windows_workstation
 ansible_shell_type=powershell
 device=Ethernet0
 
+[windows_server:children]
+domain_controller
+
 [server:children]
 centos_server
+windows_server
 
-[linux_server:vars]
+[domain_controller]
+10.0.5.5 hostname=dc-blue8
+
+[server:vars]
 gateway=10.0.5.2
 name_server=10.0.5.2
 prefix=24
