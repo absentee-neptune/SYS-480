@@ -1,6 +1,7 @@
 function Connect {
     try {
-        $VIserver = Read-Host "Enter vCenter Hostname or IP Address"
+        # $VIserver = Read-Host "Enter vCenter Hostname or IP Address"
+        $VIserver = "vcenter.brianna.local"
         Connect-VIServer -Server $VIserver -ErrorAction Stop
     }
     catch {
