@@ -64,3 +64,11 @@ function powerOn {
   
     Start-VM -VM $vmName
 }
+
+function getMac {
+    param (
+        [string]$vmName
+    )
+    
+    Get-NetworkAdapter -VM $vmName | Format-Table MacAddress
+}
