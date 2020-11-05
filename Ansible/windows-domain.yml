@@ -39,4 +39,3 @@
   - name: DNS config
     win_shell: | 
       Add-DnsServerForwarder -IPAddress "{{ gateway }}" -PassThru
-    

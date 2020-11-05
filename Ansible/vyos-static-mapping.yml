@@ -10,8 +10,8 @@
       prompt: What is the host's MAC Address
       private: no
   tasks:
-    - name: show configuration on ethernet devices eth0 and eth1
+    - name: set configuration on ethernet devices eth0 and eth1
       vyos_config:
         lines:
-        - "set service dhcp_server shared_network_name {{shared_network_name}} subnet {{dhcp_subnet}} static-mapping {{static_map_name}} ip-address {{ mapped_ip }}"
-        - "set service dhcp_server shared_network_name {{shared_network_name}} subnet {{dhcp_subnet}} static-mapping {{static_map_name}} mac-address {{ mapped_mac }}"
+        - "set service dhcp-server shared-network-name {{shared_network_name}} subnet {{dhcp_subnet}} static-mapping {{static_map_name}} ip-address {{ mapped_ip }}"
+        - "set service dhcp-server shared-network-name {{shared_network_name}} subnet {{dhcp_subnet}} static-mapping {{static_map_name}} mac-address {{ mapped_mac }}"
