@@ -19,12 +19,16 @@ windows_workstation
 ansible_shell_type=powershell
 device=Ethernet0
 
-[windows_server:children]
+[server:children]
 domain_controller
+vanhalen
 
 [server:children]
 centos_server
 windows_server
+
+[vanhalen]
+10.0.5.6 hostname=vanhalen
 
 [domain_controller]
 10.0.5.5 hostname=dc-blue8
@@ -33,6 +37,7 @@ windows_server
 gateway=10.0.5.2
 name_server=10.0.5.2
 prefix=24
+netmask=255.255.255.0
 domain=blue8.local
 ansible_user=deployer
 
