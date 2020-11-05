@@ -32,8 +32,8 @@ windows_server
 [server:vars]
 gateway=10.0.5.2
 name_server=10.0.5.2
-netmask=255.255.255.0
-domain=brianna.local
+prefix=24
+domain=blue8.local
 ansible_user=deployer
 
 [vyos:vars]
