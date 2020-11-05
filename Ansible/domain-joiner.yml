@@ -1,0 +1,27 @@
+---
+- name: Join a system to the domain
+  hosts: vanhalen
+  gather_facts: no
+  vars_prompt:
+  - name: adminpassword
+    prompt: What will be the password for local and domain administrator?
+    private: yes
+
+  tasks:
+  - name: Join the domain
+    win_domain_membership:
+      dns_domain_name: "{{ domain }}"
+      hostname: "{{ hostname }}"
+      domain_admin_user: "{{ ansible_user }}"
+      domain_admin_password: "{{ adminpassword }}"
+      domain_ou_path: "OU=Servers,OU=Computers,OU=blue8,DC=blue8,DC=local"
+      state: domain
+    register: domain_state 
+
+  - name: Reboot when required
+    when: domain_state.reboot_required
+    win_reboot:
+      connect_timeout: 15
+      post_reboot_delay: 15
+      reboot_timeout: 200
+      msg: "Server config in process: rebooting..."
