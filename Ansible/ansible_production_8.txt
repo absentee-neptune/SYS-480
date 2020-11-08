@@ -10,6 +10,8 @@
 device=ens192
 
 [windows_workstation]
+hostname=workstation-1
+hostname=workstation-2
 
 [windows:children]
 windows_server
@@ -19,7 +21,7 @@ windows_workstation
 ansible_shell_type=powershell
 device=Ethernet0
 
-[server:children]
+[windows_server:children]
 domain_controller
 vanhalen
 
