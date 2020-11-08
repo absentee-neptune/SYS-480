@@ -4,14 +4,14 @@
   gather_facts: no
 
   tasks:
-    - name: Install Chocolatey Packages
-      win_chocolatey:
-        name:
-        - 7zip
-        - googlechrome
-        - vscode
-        - putty
-        - python3
-        - git
-        - notepadplusplus
-        state: present
+  - name: Install Chocolatey Packages
+    win_chocolatey:
+      name:
+      - 7zip
+      - googlechrome
+      - vscode
+      - putty
+      - python3
+      - git
+      - notepadplusplus
+      state: present

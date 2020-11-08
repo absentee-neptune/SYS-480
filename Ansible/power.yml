@@ -1,0 +1,12 @@
+---
+- name: power
+  hosts: windows_workstation
+  gather_facts: no
+
+  tasks:
+  - name: Ping
+    win_ping:
+
+  - name: Enable High Performance Power on Windows 10 systems
+    win_power_plan:
+      name: high performance
