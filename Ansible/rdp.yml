@@ -1,0 +1,15 @@
+---
+- name: rdp
+  hosts: 
+  - vanhalen
+  - windows_workstation
+  
+  tasks:
+  - name: Enable rdp
+    win_group_membership:
+      name: Remote Desktop Users
+      members:
+      - CYBER\Domain Users 
+      - BLUE8\Domain Users
+
+
