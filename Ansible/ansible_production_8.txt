@@ -1,17 +1,15 @@
 [vyos]
 10.0.17.200 hostname=fw-blue8
 
-[centos_server]
-10.0.5.11 hostname=centos-1 
-10.0.5.12 hostname=centos-2 
-10.0.5.13 hostname=centos-3 
-
-[centos_server:vars]
-device=ens192
-
 [windows_workstation]
 hostname=workstation-1
 hostname=workstation-2
+
+[vanhalen]
+10.0.5.6 hostname=vanhalen
+
+[domain_controller]
+10.0.5.5 hostname=dc-blue8
 
 [windows:children]
 windows_server
@@ -25,17 +23,7 @@ device=Ethernet0
 domain_controller
 vanhalen
 
-[server:children]
-centos_server
-windows_server
-
-[vanhalen]
-10.0.5.6 hostname=vanhalen
-
-[domain_controller]
-10.0.5.5 hostname=dc-blue8
-
-[server:vars]
+[windows_server:vars]
 gateway=10.0.5.2
 name_server=10.0.5.2
 prefix=24
