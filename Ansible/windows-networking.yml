@@ -1,5 +1,5 @@
 ---
-# This playbook configures blueteam windows static networking for the DC
+# This playbook configures blueteam windows static networking
 - name: windows-networking
   hosts: vanhalen
   gather_facts: no

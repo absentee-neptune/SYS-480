@@ -54,7 +54,7 @@ function getIPs {
     # Write-Host $vm.Guest.IPaddress[0] hostname=$vmName
 
     foreach ($vm in $vms) {
-        Write-Host $vm.Guest.IPaddress[0] hostname=$vm
+        Write-Host $vm.IPaddress[0] hostname=$vm
     }
 }
 
