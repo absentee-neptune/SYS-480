@@ -9,7 +9,10 @@
     win_group_membership:
       name: Remote Desktop Users
       members:
-      - CYBER\Domain Users 
       - BLUE8\Domain Users
+
+  - name: rdp firewall
+    win_shell: |
+      
 
 
