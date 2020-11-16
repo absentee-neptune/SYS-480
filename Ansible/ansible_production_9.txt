@@ -1,0 +1,30 @@
+windows_workstation]
+10.0.5.87 hostname=workstation-1
+10.0.5.88 hostname=workstation-2
+
+[vanhalen]
+10.0.5.6 hostname=vanhalen
+
+[domain_controller]
+10.0.5.5 hostname=dc-blue8
+
+[windows:children]
+windows_server
+windows_workstation
+
+[windows:vars]
+ansible_shell_type=powershell
+device=Ethernet0
+ansible_user=deployer
+
+[windows_server:children]
+domain_controller
+vanhalen
+
+[windows_server:vars]
+gateway=10.0.5.2
+name_server=10.0.5.2
+prefix=24
+netmask=255.255.255.0
+domain=blue8.local
+ansible_user=deployer
