@@ -1,7 +1,7 @@
 - name: parsecsv
   hosts: domain_controller
   vars_prompt:
-  - name: path
+  - name: password
     prompt: What is the new admin's password?
     private: yes
   - name: path

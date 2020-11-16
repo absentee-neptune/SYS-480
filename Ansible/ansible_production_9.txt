@@ -1,5 +1,5 @@
 [domain_controller]
-10.0.5.5 hostname=dc-blue8
+10.0.5.5
 
 [windows_server:children]
 domain_controller
