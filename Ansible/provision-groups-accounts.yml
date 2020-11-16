@@ -2,13 +2,16 @@
   hosts: domain_controller
   vars_prompt:
   - name: path
+    prompt: What is the new admin's password?
+    private: yes
+  - name: path
     prompt: Enter the path to the CSV file
     private: no
 
   tasks:
   - name: add domain admin
     win_domain_user:
-      name: blue8-demo
+      name: blue8-demo-adm
       password: "{{ password }}"
       password_never_expires: yes
       state: present
