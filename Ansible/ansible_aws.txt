@@ -1,0 +1,2 @@
+[aws]
+ubuntu@bg-sys480.gq
