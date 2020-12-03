@@ -17,7 +17,6 @@
     - name: push over the networking script
       template:
         src: files/Ubuntu/ifcg-script.j2
-        dest: '/etc/netplan/network.yaml'
         mode: 0644
         owner: root
         group: root
